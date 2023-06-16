@@ -13,6 +13,7 @@ namespace Library.src
         public string PublicationYear;
         public bool CanBorrow;
         public bool CanPrint;
+        public bool IsBorrowed;
 
         public Book(string iSBN, string author, string title, string publicationYear)
         {
@@ -22,13 +23,19 @@ namespace Library.src
             PublicationYear = publicationYear;
         }
 
-        public virtual void Borrow() { }
+        public virtual void Borrow()
+        {
+            Console.WriteLine($"{Title} by {Author} is now borrowed");
+        }
 
-        public virtual void Return() { }
+        public virtual void Return()
+        {
+            Console.WriteLine($"{Title} by {Author}has been returned");
+        }
 
         public virtual void PrintPages(int startPage, int endPage)
         {
-            Console.WriteLine($"This book can be printed from page {startPage} to page {endPage}");
+            Console.WriteLine("This book is not printable");
         }
 
         public virtual void PrintInfo()

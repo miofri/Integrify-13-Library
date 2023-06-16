@@ -8,21 +8,24 @@ namespace Library.src
     public class Customer : Person
     {
         private Library _libraryInstance;
+        public List<Book> BorrowedBook;
 
         public Customer(string name, string address)
             : base(name, address)
         {
             _libraryInstance = Library.Instance;
+            BorrowedBook = new List<Book>();
         }
 
         public void BorrowBook(Book book)
         {
-            _libraryInstance.BorrowBook(book);
+            BorrowedBook.Add(book);
+            // _libraryInstance.BorrowBook(book);
         }
 
         public void ReturnBook(Book book)
         {
-            _libraryInstance.ReturnBook(book);
+            BorrowedBook.Remove(book);
         }
     }
 }

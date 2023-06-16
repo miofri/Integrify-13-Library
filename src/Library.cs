@@ -21,15 +21,38 @@ namespace Library.src
             _person = new List<Person>();
         }
 
-        public void AddBook(Book book) { }
+        public void AddBook(Book book)
+        {
+            Book.Add(book);
+        }
 
-        public void EditBook(Book book) { }
+        public void EditBook(string bookISBN, Book bookReplacement)
+        {
+            var bookInLibrary = Book.FindIndex(c => c.ISBN == bookISBN);
+            Book[bookInLibrary] = bookReplacement;
+        }
 
-        public void BorrowBook(Book book) { }
+        public void BorrowBook(Book book, Customer borrower)
+        {
+            var borrowedBook = Book.Find(c => book.ISBN == c.ISBN);
+            if (borrowedBook != null)
+            {
+                borrowedBook.IsBorrowed = true;
+                borrower.BorrowBook(borrowedBook); //Adds to customer's borrowed book list.
+            }
+        }
+
+        public void ReturnBook(Book book, Customer borrower)
+        {
+            var borrowedBook = Book.Find(c => book.ISBN == c.ISBN);
+            if (borrowedBook != null)
+            {
+                borrowedBook.IsBorrowed = false;
+                borrower.ReturnBook(borrowedBook); //Adds to customer's borrowed book list.
+            }
+        }
 
         public void RemoveBook(Book book) { }
-
-        public void ReturnBook(Book book) { }
 
         public void AddPerson(Person person) { }
 

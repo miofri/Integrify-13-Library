@@ -20,9 +20,13 @@ namespace Library.src
             _libraryInstance.AddBook(book);
         }
 
-        public void EditBook(Book book)
+        public void EditBook(string bookISBN, Book bookReplacement)
         {
-            _libraryInstance.EditBook(book);
+            if (bookReplacement.ISBN != bookISBN)
+            {
+                bookReplacement.ISBN = bookISBN;
+            }
+            _libraryInstance.EditBook(bookISBN, bookReplacement);
         }
 
         public void RemoveBooknBook(Book book)
