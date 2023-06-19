@@ -5,15 +5,19 @@ using System.Threading.Tasks;
 
 namespace Library.src
 {
-    public class Librarian : Person
+    public interface ILibrarian
     {
-        private Library _libraryInstance;
+        void AddBook(Book book);
+        void EditBook(string bookISBN, Book bookReplacement);
+        void RemoveBook(Book book);
+    }
+
+    public class Librarian : Person, ILibrarian
+    {
+        private Library _libraryInstance = Library.Instance;
 
         public Librarian(string name, string address)
-            : base(name, address)
-        {
-            _libraryInstance = Library.Instance;
-        }
+            : base(name, address) { }
 
         public void AddBook(Book book)
         {
@@ -22,14 +26,10 @@ namespace Library.src
 
         public void EditBook(string bookISBN, Book bookReplacement)
         {
-            if (bookReplacement.ISBN != bookISBN)
-            {
-                bookReplacement.ISBN = bookISBN;
-            }
             _libraryInstance.EditBook(bookISBN, bookReplacement);
         }
 
-        public void RemoveBooknBook(Book book)
+        public void RemoveBook(Book book)
         {
             _libraryInstance.RemoveBook(book);
         }

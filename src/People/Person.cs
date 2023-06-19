@@ -17,5 +17,11 @@ namespace Library.src
             _name = name;
             _address = address;
         }
+
+        public System.Guid GetId
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
     }
 }

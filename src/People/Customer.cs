@@ -5,7 +5,13 @@ using System.Threading.Tasks;
 
 namespace Library.src
 {
-    public class Customer : Person
+    public interface ICustomer
+    {
+        void BorrowBook(Book book);
+        void ReturnBook(Book book);
+    }
+
+    public class Customer : Person, ICustomer
     {
         private Library _libraryInstance;
         public List<Book> BorrowedBook;
@@ -20,12 +26,13 @@ namespace Library.src
         public void BorrowBook(Book book)
         {
             BorrowedBook.Add(book);
-            // _libraryInstance.BorrowBook(book);
+            _libraryInstance.BorrowBook(book, this);
         }
 
         public void ReturnBook(Book book)
         {
             BorrowedBook.Remove(book);
+            _libraryInstance.ReturnBook(book, this);
         }
     }
 }
