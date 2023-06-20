@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Library.src
+namespace LibraryManagement.src
 {
     public class Library
     {
@@ -24,6 +24,7 @@ namespace Library.src
         public void AddBook(Book book)
         {
             Book.Add(book);
+            Console.WriteLine("Book added");
         }
 
         public void EditBook(string bookISBN, Book bookReplacement)
@@ -71,7 +72,7 @@ namespace Library.src
             }
         }
 
-        public virtual void RemoveBook(Book book)
+        public void RemoveBook(Book book)
         {
             Book.Remove(book);
         }

@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Library.src
+namespace LibraryManagement.src
 {
     public class Book
     {
         public string ISBN;
-        public string Author;
-        public string Title;
-        public string PublicationYear;
-        public bool CanBorrow;
-        public bool CanPrint;
+        protected string Author;
+        protected string Title;
+        protected string PublicationYear;
+        protected bool CanBorrow;
+        protected bool CanPrint;
         public bool IsBorrowed;
 
         public Book(string iSBN, string author, string title, string publicationYear)
