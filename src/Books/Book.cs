@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace LibraryManagement.src
 {
-    public class Book
+    public abstract class Book
     {
         public string ISBN;
         protected string Author;

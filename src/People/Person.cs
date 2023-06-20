@@ -5,17 +5,22 @@ using System.Threading.Tasks;
 
 namespace LibraryManagement.src
 {
-    public class Person
+    public abstract class Person
     {
-        private System.Guid _id;
-        public string _name;
-        public string _address;
+        protected System.Guid _id;
+        protected string _name;
+        protected string _address;
 
         public Person(string name, string address)
         {
             _id = new System.Guid();
             _name = name;
             _address = address;
+        }
+
+        public string GetName
+        {
+            get { return _name; }
         }
 
         public System.Guid GetId

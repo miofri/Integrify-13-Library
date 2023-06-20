@@ -49,7 +49,7 @@ namespace LibraryManagement.src
             {
                 borrowedBook.IsBorrowed = true;
                 borrower.BorrowBook(borrowedBook); //Adds to customer's borrowed book list.
-                Console.WriteLine($"Book is now borrowed by customer {borrower._name}");
+                Console.WriteLine($"Book is now borrowed by customer {borrower.GetName}");
             }
             else
             {
